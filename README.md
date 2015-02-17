@@ -23,7 +23,7 @@ Repräsentiert eine Ergebnis-Tabelle nach einem korrekten SELECT-Statement.
 Hat eine Methode `nenneAnzahlSpalten()` zum Nennen der Anzahl seiner Spalten. 
 Hat eine Methode `nenneAnzahlZeilen()` zum Nennen der Anzahl seiner Zeilen. 
 Datensätze können mit der Methode `datensatzHinzufuegen(MySqlDatensatz)` hinzugefügt werden. 
-Zell-Werte können mit der Methode nenneAttributWert(zeilenNr, spaltenNr) erfragt werden. 
+Zell-Werte können mit der Methode `nenneAttributWert(zeilenNr, spaltenNr)` erfragt werden. 
 Die Zellinhalte können nach dem Auslesen aus der Tabelle zum entsprechen Typ gecastet werden. 
 
 
