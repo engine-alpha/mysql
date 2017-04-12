@@ -7,14 +7,15 @@ import java.util.ArrayList;
  * Alle Werte sind als String gespeichert und werden als String ausgegeben. 
  * Der Benutzer muss die zurueck erhaltenen Werte bei Bedarf SELBST wieder zum richtigen Typ casten !!!
  * 
- * @author      mike ganshorn
+ * @author      mike ganshorn, manuel hengge
  * 
- * @version     1.0 (2015-02-17)
+ * @version     1.1 (2017-04-10)
  */
 public class MySqlTabelle
 {
-    private int anzahlZeilen;   // Die Ueberschrift ist Zeile 0
+    private int anzahlZeilen;   
     private int anzahlSpalten;
+    private ArrayList<String> ueberschriften;
     private ArrayList<MySqlDatensatz> zeilen;
     
     
@@ -27,6 +28,7 @@ public class MySqlTabelle
         this.anzahlZeilen = 0;
         this.anzahlSpalten = 0;
         this.zeilen = new ArrayList<MySqlDatensatz>();
+        this.ueberschriften = new ArrayList<String>();
     }
     
     
@@ -36,25 +38,52 @@ public class MySqlTabelle
      *
      * @param   datensatz   Referenz auf das neue MySqlDatensatz-Objekt
      */
-    public void datensatzHinzufuegen(MySqlDatensatz datensatz)
+    public void datensatzHinzufuegen( MySqlDatensatz datensatz )
     {
-        this.zeilen.add(datensatz);
+        this.zeilen.add( datensatz );
         this.anzahlZeilen++;
         this.anzahlSpalten = this.zeilen.get(0).nenneAnzahlAttribute();
     }
+    
+    /**
+     * Fuegt einen neuen Attribut-Bezeichner fuer eine weitere Spalte in die ArrayList der Ueberschriften hinzu. 
+     * 
+     * @param   attribut    Eine neue Spaltenueberschrift
+     */
+    public void attributHinzufuegen( String attribut ) 
+    {
+        this.ueberschriften.add( attribut );
+        
+    }   
+    
+    /**
+     * Gibt alle Spaltenbezeichnungen als einzelnen String zurück. 
+     * 
+     * @return  Alle Spalteueberschriften als ein TAB-separierter String
+     */
+    public String gibSpaltenbezeichnungen()
+    {
+        String spaltenbezeichnungen = "";
+        
+        for ( int i = 0 ; i<ueberschriften.size() ; i++ )
+        {
+            spaltenbezeichnungen = spaltenbezeichnungen + ueberschriften.get(i) + "\t";
+        }
+        
+        return spaltenbezeichnungen;
+    }
 
     
-    
-    // Ueberschrift ist Zeile 0 - Datensaetze ab Zeile 1
     /**
      * Gibt den Zellwert einer bestimmten Zelle zurueck. 
      *
      * @param   zeile   Die Nummer der Zeile (Uberschrift hat Nummer 0)
+     * 
      * @param   spalte  Die Nummer der Spalte (beginnend bei 0)
      * 
      * @return  Zellwert an dieser Stelle in der Tabelle
      */
-    public String nenneZellwert(int zeile, int spalte)
+    public String nenneZellwert( int zeile , int spalte )
     {
         if ( zeile >= 0  &&  zeile <= this.anzahlZeilen  &&  spalte >= 0  &&  spalte <= this.anzahlSpalten )
         {
@@ -69,13 +98,13 @@ public class MySqlTabelle
     
     
     /**
-     * Gibt die Anzahl an Datensaetzen zurueck. Die Ueberschrift wird NICHT als Datensatz gezaehlt!
+     * Gibt die Anzahl an Datensaetzen zurueck. 
      *
      * @return  Anzahl an Datensaetzen der Tabelle (0 , wenn leer, -1 wenn SQL-Statement "verunglueckt")
      */
     public int nenneAnzahlDatensaetze()
     {
-        return this.anzahlZeilen - 1;
+        return this.anzahlZeilen;
     }
     
     
@@ -108,5 +137,17 @@ public class MySqlTabelle
         {
             return 0;
         }
+    }
+    
+    
+    
+    /**
+     * Gibt die ArrayList von Datensaetzen zurück
+     * 
+     * @return ArrayList mit MySqlDatensatz-Objekten
+     */
+    public ArrayList<MySqlDatensatz> nenneZeilen()
+    {
+        return this.zeilen;
     }
 }
