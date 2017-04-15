@@ -57,11 +57,11 @@ public class MySqlTabelle
     }   
     
     /**
-     * Gibt alle Spaltenbezeichnungen als einzelnen String zurück. 
+     * Gibt alle Spaltenbezeichnungen als einzelnen String zurueck. 
      * 
      * @return  Alle Spalteueberschriften als ein TAB-separierter String
      */
-    public String gibSpaltenbezeichnungen()
+    public String nenneSpaltenbezeichnungen()
     {
         String spaltenbezeichnungen = "";
         

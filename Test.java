@@ -38,7 +38,7 @@ public class Test extends MySqlZugriff
     
     public void printRock()
     {
-        System.out.println( rock.gibSpaltenbezeichnungen() );
+        System.out.println( rock.nenneSpaltenbezeichnungen() );
         ArrayList<MySqlDatensatz> rockZeilen = rock.nenneZeilen();
         
         for ( int i = 0 ; i<rock.nenneAnzahlDatensaetze() ; i++ )
