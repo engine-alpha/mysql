@@ -1,13 +1,13 @@
-#DatenbankAnbindung (Version 1.0)
+# DatenbankAnbindung (Version 1.0)
 
-##Überblick
+## Überblick
 
 Bibliothek zum Zugriff auf MySQL-Datenbank-Server aus einer JAVA-Anwendung heraus. 
 Die Ergebnis-Tabellen berstehen der Einfachheit halber aus String-Zellen. 
 Die Zellinhalte können nach dem Auslesen aus der Tabelle zum entsprechen Typ gecastet werden. 
 
 
-##Klasse MySqlDatensatz
+## Klasse MySqlDatensatz
 
 Repräsentiert eine Zeile in einer Ergebnis-Tabelle. 
 Container fuer Attributwerte vom Typ Sting. 
@@ -16,7 +16,7 @@ Attribute können mit der Methode `attributHinzufuegen(String)` hinzugefuegt wer
 Attribut-Werte können mit der Methode `nenneAttributWert(int)` abgefragt werden. 
 
 
-##Klasse MySqlTabelle
+## Klasse MySqlTabelle
 
 Repräsentiert eine Ergebnis-Tabelle nach einem korrekten SELECT-Statement. 
 **Dient NUR zum Entnehmen der Abfrage-Ergebnisse** in Form von Strings. 
@@ -27,7 +27,7 @@ Zell-Werte können mit der Methode `nenneAttributWert(zeilenNr, spaltenNr)` erfr
 Die Zellinhalte können nach dem Auslesen aus der Tabelle zum entsprechen Typ gecastet werden. 
 
 
-##Klasse MySqlZugriff
+## Klasse MySqlZugriff
 
 Repräsentiert die Verbindung zum Datenbank-Server. 
 - Lädt beim Erzeugen eines Objekts den MySQL-Treiber. 
@@ -39,5 +39,4 @@ Repräsentiert die Verbindung zum Datenbank-Server.
  * letzte SQL-Fehlermeldung 
  * ob die letzte Abfrage akzeptiert wurde 
  * die Ergebnis-Tabelle bei erfolgreicher Abfrage 
-- Kann die Verbindung zum MySQL-Server wieder beenden  
-
+- Kann die Verbindung zum MySQL-Server wieder beenden
